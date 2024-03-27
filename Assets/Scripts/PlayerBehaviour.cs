@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,8 +22,20 @@ public class NewBehaviourScript : MonoBehaviour
 
             if(Physics.Raycast(ray, out hitInfo))
             {
-                agent.SetDestination(hitInfo.point);
+               CheckRaycastHit(hitInfo);
             }
+        }
+    }
+
+    void CheckRaycastHit(RaycastHit hit)
+    {
+        if(hit.collider.tag == "Door")
+        {
+
+        }
+        else
+        {
+            agent.SetDestination(hit.point);
         }
     }
 }
