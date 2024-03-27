@@ -8,8 +8,15 @@ public class DoorBehaviour : MonoBehaviour
 {
     private Animator animator;
     private bool isOpen = false;
+    private Color startClr;
 
     public float RequiredPlayerDistance;
+
+    void Start()
+    {
+        startClr = GetComponent<Renderer>().material.color;
+        animator = transform.parent.gameObject.GetComponent<Animator>();
+    }
 
     void Update()
     {
@@ -31,8 +38,6 @@ public class DoorBehaviour : MonoBehaviour
 
     void PlayAnimation()
     {
-        animator = transform.parent.gameObject.GetComponent<Animator>();
-
         if (isOpen)
         {
             animator.Play("DoorClose");
@@ -41,5 +46,15 @@ public class DoorBehaviour : MonoBehaviour
         {
             animator.Play("DoorOpen");
         }  
+    }
+
+    void OnMouseEnter()
+    {
+        GetComponent<Renderer>().material.color = Color.yellow;
+    }
+
+    void OnMouseExit()
+    {
+        GetComponent<Renderer>().material.color = startClr;
     }
 }
