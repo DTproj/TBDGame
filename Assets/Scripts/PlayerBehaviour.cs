@@ -25,9 +25,4 @@ public class NewBehaviourScript : MonoBehaviour
             }
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
 }
