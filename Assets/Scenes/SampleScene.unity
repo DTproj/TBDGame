@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 146750424}
   - component: {fileID: 146750423}
   - component: {fileID: 146750422}
+  - component: {fileID: 146750425}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -151,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 146750420}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -1.12, y: 0.03999996, z: 1.3}
+  m_LocalPosition: {x: -1.12, y: 0, z: 1.3}
   m_LocalScale: {x: 3.3, y: 4, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -228,6 +229,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146750420}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &146750425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146750420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8c5cb7466648f49adf0393aea7cbb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RequiredPlayerDistance: 0
 --- !u!1 &300907347
 GameObject:
   m_ObjectHideFlags: 0
