@@ -12,7 +12,6 @@ public class CameraBehaviour : MonoBehaviour
     private float newY;
     private float newZ;
 
-    // Update is called once per frame
     void Update()
     {
         if (target == null) return;
