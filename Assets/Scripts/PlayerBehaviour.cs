@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hitInfo;
-
+    
             if(Physics.Raycast(ray, out hitInfo))
             {
                CheckRaycastHit(hitInfo);
