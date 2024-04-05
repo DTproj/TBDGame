@@ -25,6 +25,8 @@ public class NewBehaviourScript : MonoBehaviour
                CheckRaycastHit(hitInfo);
             }
         }
+
+        CamRotation();
     }
 
     void CheckRaycastHit(RaycastHit hit)
@@ -36,6 +38,19 @@ public class NewBehaviourScript : MonoBehaviour
         else
         {
             agent.SetDestination(hit.point);
+        }
+    }
+
+    void CamRotation()
+    {
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Camera.main.transform.RotateAround(agent.transform.position, Vector3.up, 90);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Camera.main.transform.RotateAround(agent.transform.position, Vector3.up, -90);
         }
     }
 }
