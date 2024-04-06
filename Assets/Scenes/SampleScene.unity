@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c8c5cb7466648f49adf0393aea7cbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredPlayerDistance: 0
+  PlayerBehaviourScript: {fileID: 1879649468}
 --- !u!208 &146750426
 NavMeshObstacle:
   m_ObjectHideFlags: 0
