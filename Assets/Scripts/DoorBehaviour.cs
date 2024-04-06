@@ -10,7 +10,7 @@ public class DoorBehaviour : MonoBehaviour
     private bool isOpen = false;
     private Color startClr;
 
-    public float RequiredPlayerDistance;
+    public PlayerBehaviour PlayerBehaviourScript;
 
     void Start()
     {

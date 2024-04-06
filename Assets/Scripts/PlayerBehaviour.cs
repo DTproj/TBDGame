@@ -4,9 +4,11 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     private NavMeshAgent agent;
+
+    public NavMeshAgent Agent { get { return agent; } }
 
     void Start()
     {
@@ -47,7 +49,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             Camera.main.transform.RotateAround(agent.transform.position, Vector3.up, 90);
         }
-
+        
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Camera.main.transform.RotateAround(agent.transform.position, Vector3.up, -90);
