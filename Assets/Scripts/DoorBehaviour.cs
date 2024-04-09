@@ -8,6 +8,7 @@ public class DoorBehaviour : MonoBehaviour
 {
     private Animator animator;
     private bool isOpen = false;
+    private bool isPlayerClose = false;
     private Color startClr;
 
     public PlayerBehaviour PlayerBehaviourScript;
@@ -27,7 +28,7 @@ public class DoorBehaviour : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.tag == "Door")
+                if (hit.collider.tag == "Door" && isPlayerClose)
                 {
                     PlayAnimation();
                     isOpen = !isOpen;
@@ -51,10 +52,23 @@ public class DoorBehaviour : MonoBehaviour
     void OnMouseEnter()
     {
         GetComponent<Renderer>().material.color = Color.yellow;
+        CheckDistanceToPlayer();
     }
 
     void OnMouseExit()
     {
         GetComponent<Renderer>().material.color = startClr;
+    }
+
+    void CheckDistanceToPlayer()
+    {
+        if(Vector3.Distance(transform.position, PlayerBehaviourScript.transform.position) <= 5)
+        {
+            isPlayerClose = true;
+        }
+        else
+        {
+            isPlayerClose = false;
+        }
     }
 }
