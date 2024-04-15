@@ -19,6 +19,14 @@ public class InteractableObjectBehaviour : MonoBehaviour
         
     }
 
+    void OnMouseDown()
+    {
+        if (isPlayerClose)
+        {
+
+        }
+    }
+
     void OnMouseEnter()
     {
         GetComponent<Renderer>().material.color = Color.yellow;
