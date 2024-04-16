@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,6 +30,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         CamRotation();
+        CamZoom();
     }
 
     void CheckRaycastHit(RaycastHit hit)
@@ -53,6 +55,19 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             Camera.main.transform.RotateAround(agent.transform.position, Vector3.up, -90);
+        }
+    }
+
+    void CamZoom()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f && Camera.main.orthographicSize < 20)
+        {
+            Camera.main.orthographicSize++;
+        }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f && Camera.main.orthographicSize > 1)
+        {
+            Camera.main.orthographicSize--;
         }
     }
 }
