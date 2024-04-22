@@ -7,6 +7,7 @@ public class InteractableObjectBehaviour : MonoBehaviour
     private bool isPlayerClose = false;
     private Color startClr;
 
+    public DlgTrigger dlgTrg;
     public PlayerBehaviour PlayerBehaviourScript;
 
     void Start()
@@ -23,7 +24,7 @@ public class InteractableObjectBehaviour : MonoBehaviour
     {
         if (isPlayerClose)
         {
-
+            dlgTrg.TriggerDlg();
         }
     }
 
