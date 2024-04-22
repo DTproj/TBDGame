@@ -10,6 +10,7 @@ public class DlgManager : MonoBehaviour
     public Text nameTxt;
     public Text dlgTxt;
 
+    public Animator animator;
 
     void Start()
     {
