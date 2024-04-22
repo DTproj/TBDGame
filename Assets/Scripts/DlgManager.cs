@@ -11,6 +11,7 @@ public class DlgManager : MonoBehaviour
     public Text dlgTxt;
 
     public Animator animator;
+    private bool isOpen = false;
 
     void Start()
     {
@@ -37,7 +38,6 @@ public class DlgManager : MonoBehaviour
     {
         if(sentences.Count == 0)
         {
-            Debug.Log("gtfo");
             return;
         }
 
