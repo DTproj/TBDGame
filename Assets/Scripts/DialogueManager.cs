@@ -16,6 +16,8 @@ public class DialogueManager : MonoBehaviour
     private bool dlgOpen;
     private string currentLine;
 
+    public bool IsDialogueOpen {  get { return dlgOpen; } }
+
     void Start()
     {
         instance = this;

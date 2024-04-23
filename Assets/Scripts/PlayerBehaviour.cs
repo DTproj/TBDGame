@@ -18,6 +18,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.Instance.IsDialogueOpen)
+        {
+            return;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
