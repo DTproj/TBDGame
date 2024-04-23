@@ -1021,6 +1021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerBehaviourScript: {fileID: 1879649468}
+  DialogueTrigger: {fileID: 644864068}
 --- !u!114 &644864068
 MonoBehaviour:
   m_ObjectHideFlags: 0

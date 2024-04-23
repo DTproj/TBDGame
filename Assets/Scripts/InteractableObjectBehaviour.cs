@@ -8,6 +8,7 @@ public class InteractableObjectBehaviour : MonoBehaviour
     private Color startClr;
 
     public PlayerBehaviour PlayerBehaviourScript;
+    public DialogueTrigger DialogueTrigger;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class InteractableObjectBehaviour : MonoBehaviour
     {
         if (isPlayerClose)
         {
+            DialogueTrigger.TriggerDialogue();
         }
     }
 
