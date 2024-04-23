@@ -33,8 +33,6 @@ public class DialogueManager : MonoBehaviour
         dlgOpen = true;
         DialoguePanel.SetActive(true);
 
-        Debug.Log("retard");
-
         foreach (var line in dialogue.Lines) 
         {
             dialogueQueue.Enqueue(line);
