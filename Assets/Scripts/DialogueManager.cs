@@ -18,6 +18,9 @@ public class DialogueManager : MonoBehaviour
 
     public bool IsDialogueOpen {  get { return dlgOpen; } }
 
+    public GameObject[] Choices;
+    public TextMeshProUGUI ChoicesText;
+
     void Start()
     {
         instance = this;
