@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class DialogueManager : MonoBehaviour
     public bool IsDialogueOpen {  get { return dlgOpen; } }
 
     public GameObject[] Choices;
-    public TextMeshProUGUI ChoicesText;
+    public TextMeshProUGUI[] ChoicesText;
 
     void Start()
     {
@@ -29,6 +30,20 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(false);
 
         dialogueQueue = new Queue<string>();
+
+        ChoicesText = new TextMeshProUGUI[Choices.Length];
+
+        int i = 0;
+        foreach (var choice in Choices)
+        {
+            ChoicesText[i] =choice.GetComponentInChildren<TextMeshProUGUI>();
+            i++;
+        }
+    }
+
+    private void ChoiceDisplay()
+    {
+
     }
 
     public void EnterDialogue(Dialogue dialogue)
@@ -51,6 +66,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueQueue.Count == 0)
         {
             ExitDialogue();
+            return;
         }
 
         currentLine = dialogueQueue.Dequeue();

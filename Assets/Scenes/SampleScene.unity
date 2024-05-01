@@ -869,7 +869,7 @@ MonoBehaviour:
   DialoguePanel: {fileID: 382603324}
   DialogueText: {fileID: 1900940477}
   Choices: []
-  ChoicesText: {fileID: 0}
+  ChoicesText: []
 --- !u!4 &435491326
 Transform:
   m_ObjectHideFlags: 0
