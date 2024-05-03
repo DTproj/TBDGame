@@ -7,7 +7,6 @@ using UnityEngine;
 public class DialogueManager : MonoBehaviour
 {
     private static DialogueManager instance;
-
     public static DialogueManager Instance { get { return instance; } }
 
     public GameObject DialoguePanel;
