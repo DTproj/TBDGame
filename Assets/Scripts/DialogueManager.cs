@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
 
     public GameObject DialoguePanel;
     public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI NameText;
 
     private Queue<string> dialogueQueue;
     private bool dlgOpen;
@@ -51,6 +52,8 @@ public class DialogueManager : MonoBehaviour
 
         dlgOpen = true;
         DialoguePanel.SetActive(true);
+
+        NameText.text = dialogue.Name;
 
         foreach (var line in dialogue.Lines) 
         {
