@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] InventorySlots;
 
     private bool isOpen = false;
+    public bool IsInventoryOpen {  get { return isOpen; } }
 
     private static InventoryManager instance;
     public static InventoryManager Instance {  get { return instance; } }

@@ -18,7 +18,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.Instance.IsDialogueOpen)
+        if (DialogueManager.Instance.IsDialogueOpen || InventoryManager.Instance.IsInventoryOpen)
         {
             return;
         }
