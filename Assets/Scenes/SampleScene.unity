@@ -5415,37 +5415,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 867197851}
     m_Modifications:
-    - target: {fileID: 759781021624131063, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 115
-      objectReference: {fileID: 0}
-    - target: {fileID: 759781021624131063, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 165
-      objectReference: {fileID: 0}
     - target: {fileID: 3673381148636894232, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
       propertyPath: m_Name
       value: InventorySlot
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409309116259234803, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409309116259234803, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409309116259234803, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4409309116259234803, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_Color.r
-      value: 0.987378
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473539760126919102, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621986184319354098, guid: 7398f8ae95e2c7b4ab371c5805e18b29, type: 3}
       propertyPath: m_Pivot.x

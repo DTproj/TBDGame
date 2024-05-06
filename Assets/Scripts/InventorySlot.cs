@@ -1,15 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
     public bool hasItem;
+    public bool isSelected;
+    public GameObject selectionShader;
 
     private string itemName;
     private string itemDesc;
     public Image Image;
+
+    void Start()
+    {
+        selectionShader.SetActive(false);
+    }
 
     public void AddItem(string name, string description)
     {
@@ -18,6 +26,16 @@ public class InventorySlot : MonoBehaviour
             itemName = name;
             itemDesc = description;
             hasItem = true;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            InventoryManager.Instance.DeselectSlots();
+            selectionShader.SetActive(true);
+            isSelected = true;
         }
     }
 }
