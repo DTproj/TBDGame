@@ -79,5 +79,8 @@ public class DialogueManager : MonoBehaviour
     {
         dlgOpen = false;
         DialoguePanel.SetActive(false);
+
+        //placeholder
+        InventoryManager.Instance.AddItemToInventory("Inanimate Item", "It's an inanimate fuckin' item.");
     }
 }
