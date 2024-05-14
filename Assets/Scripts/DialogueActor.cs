@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class DialogueNode
+public class DialogueActor
 {
+    public string Name;
+
     [TextArea(3, 10)]
-    public string DialogueText;
-    public List<DialogueResponse> Responses;
+    public string[] Lines;
+
+    public DialogueObject Dialogue;
 }

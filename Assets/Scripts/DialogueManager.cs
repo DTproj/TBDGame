@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,14 +14,14 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NameText;
 
+    public Button[] Choices;
+
     private Queue<string> dialogueQueue;
     private bool dlgOpen;
     private string currentLine;
 
     public bool IsDialogueOpen {  get { return dlgOpen; } }
 
-    public GameObject[] Choices;
-    public TextMeshProUGUI[] ChoicesText;
 
     void Start()
     {
@@ -31,48 +32,49 @@ public class DialogueManager : MonoBehaviour
 
         dialogueQueue = new Queue<string>();
 
-        ChoicesText = new TextMeshProUGUI[Choices.Length];
+        DisableResponseButtons();
+    }
 
-        int i = 0;
-        foreach (var choice in Choices)
+    private void DisableResponseButtons()
+    {
+        foreach (var btn in Choices)
         {
-            ChoicesText[i] =choice.GetComponentInChildren<TextMeshProUGUI>();
-            i++;
+            btn.enabled = false;
         }
     }
 
-    private void ChoiceDisplay()
+    public void EnterDialogue(DialogueActor actor)
     {
-
-    }
-
-    public void EnterDialogue(Dialogue dialogue)
-    {
-        dialogueQueue.Clear();
-
         dlgOpen = true;
         DialoguePanel.SetActive(true);
 
-        NameText.text = dialogue.Name;
+        DisableResponseButtons();
 
-        foreach (var line in dialogue.Lines) 
-        {
-            dialogueQueue.Enqueue(line);
-        }
-        
-        NextLine();
+        NameText.text = actor.Name;
+
+        NextNode(actor.Dialogue.rootNode);
     }
 
-    public void NextLine()
+    public void NextNode(DialogueNode node)
     {
-        if (dialogueQueue.Count == 0)
-        {
-            ExitDialogue();
-            return;
-        }
+        DisableResponseButtons();
 
-        currentLine = dialogueQueue.Dequeue();
-        DialogueText.text = currentLine;
+        DialogueText.text = node.DialogueText;
+
+        for(int i = 0; i < node.Responses.Count; i++)
+        {
+            Choices[i].enabled = true;
+            Choices[i].GetComponentInChildren<TextMeshProUGUI>().text = node.Responses[i].ResponseText;
+
+            if (node.Responses[i].NextNode == null)
+            {
+                Choices[i].GetComponent<Button>().onClick.AddListener(() => ExitDialogue());
+            }
+            else
+            {
+                Choices[i].GetComponent<Button>().onClick.AddListener(() => NextNode(node.Responses[i].NextNode));
+            }           
+        }
     }
 
     void ExitDialogue()
@@ -82,5 +84,34 @@ public class DialogueManager : MonoBehaviour
 
         //placeholder
         InventoryManager.Instance.AddItemToInventory("Inanimate Item", "It's an inanimate fuckin' item.");
+    }
+
+    public void EnterDialogueOld(DialogueActor actor)
+    {
+        dialogueQueue.Clear();
+
+        dlgOpen = true;
+        DialoguePanel.SetActive(true);
+
+        NameText.text = actor.Name;
+
+        foreach (var line in actor.Lines) 
+        {
+            dialogueQueue.Enqueue(line);
+        }
+        
+        NextLineOld();
+    }
+
+    public void NextLineOld()
+    {
+        if (dialogueQueue.Count == 0)
+        {
+            ExitDialogue();
+            return;
+        }
+
+        currentLine = dialogueQueue.Dequeue();
+        DialogueText.text = currentLine;
     }
 }
