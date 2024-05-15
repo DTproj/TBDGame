@@ -14,8 +14,6 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI DialogueText;
     public TextMeshProUGUI NameText;
 
-    public Button[] Choices;
-
     private Queue<string> dialogueQueue;
     private bool dlgOpen;
     private string currentLine;
@@ -31,24 +29,12 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(false);
 
         dialogueQueue = new Queue<string>();
-
-        DisableResponseButtons();
-    }
-
-    private void DisableResponseButtons()
-    {
-        foreach (var btn in Choices)
-        {
-            btn.enabled = false;
-        }
     }
 
     public void EnterDialogue(DialogueActor actor)
     {
         dlgOpen = true;
         DialoguePanel.SetActive(true);
-
-        DisableResponseButtons();
 
         NameText.text = actor.Name;
 
@@ -57,24 +43,7 @@ public class DialogueManager : MonoBehaviour
 
     public void NextNode(DialogueNode node)
     {
-        DisableResponseButtons();
-
         DialogueText.text = node.DialogueText;
-
-        for(int i = 0; i < node.Responses.Count; i++)
-        {
-            Choices[i].enabled = true;
-            Choices[i].GetComponentInChildren<TextMeshProUGUI>().text = node.Responses[i].ResponseText;
-
-            if (node.Responses[i].NextNode == null)
-            {
-                Choices[i].GetComponent<Button>().onClick.AddListener(() => ExitDialogue());
-            }
-            else
-            {
-                Choices[i].GetComponent<Button>().onClick.AddListener(() => NextNode(node.Responses[i].NextNode));
-            }           
-        }
     }
 
     void ExitDialogue()
