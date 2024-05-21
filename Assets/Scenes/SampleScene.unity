@@ -1106,6 +1106,7 @@ MonoBehaviour:
   DialoguePanel: {fileID: 382603324}
   DialogueText: {fileID: 1392464309}
   NameText: {fileID: 382964208}
+  Choices: []
 --- !u!4 &435491326
 Transform:
   m_ObjectHideFlags: 0
@@ -1705,8 +1706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor:
     Name: Inanimate Object
-    Lines: []
-    Dialogue: {fileID: 11400000, guid: fe24e5ddf2e166b43b2fed12bc556b2c, type: 2}
+    ActorInkJson: {fileID: 4900000, guid: 6acf2577b6523f5419377048740d1f38, type: 3}
 --- !u!1001 &645713904
 PrefabInstance:
   m_ObjectHideFlags: 0
