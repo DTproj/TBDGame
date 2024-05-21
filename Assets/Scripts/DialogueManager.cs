@@ -1,3 +1,4 @@
+using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,19 @@ public class DialogueManager : MonoBehaviour
     private static DialogueManager instance;
     public static DialogueManager Instance { get { return instance; } }
 
-    public GameObject DialoguePanel;
-    public TextMeshProUGUI DialogueText;
-    public TextMeshProUGUI NameText;
+    [SerializeField]
+    private GameObject DialoguePanel;
 
-    private Queue<string> dialogueQueue;
+    [SerializeField]
+    private TextMeshProUGUI DialogueText;
+
+    [SerializeField]
+    private TextMeshProUGUI NameText;
+
     private bool dlgOpen;
-    private string currentLine;
+    public bool IsDialogueOpen { get { return dlgOpen; } }
 
-    public bool IsDialogueOpen {  get { return dlgOpen; } }
-
+    private Story currentStory;
 
     void Start()
     {
@@ -27,60 +31,34 @@ public class DialogueManager : MonoBehaviour
 
         dlgOpen = false;
         DialoguePanel.SetActive(false);
-
-        dialogueQueue = new Queue<string>();
     }
 
     public void EnterDialogue(DialogueActor actor)
     {
-        dlgOpen = true;
-        DialoguePanel.SetActive(true);
-
         NameText.text = actor.Name;
-
-        NextNode(actor.Dialogue.rootNode);
-    }
-
-    public void NextNode(DialogueNode node)
-    {
-        DialogueText.text = node.DialogueText;
-    }
-
-    void ExitDialogue()
-    {
-        dlgOpen = false;
-        DialoguePanel.SetActive(false);
-
-        //placeholder
-        InventoryManager.Instance.AddItemToInventory("Inanimate Item", "It's an inanimate fuckin' item.");
-    }
-
-    public void EnterDialogueOld(DialogueActor actor)
-    {
-        dialogueQueue.Clear();
+        currentStory = new Story(actor.ActorInkJson.text);
 
         dlgOpen = true;
         DialoguePanel.SetActive(true);
 
-        NameText.text = actor.Name;
+        StoryUpdate();
+    }
 
-        foreach (var line in actor.Lines) 
+    public void StoryUpdate()
+    {
+        if (currentStory.canContinue)
         {
-            dialogueQueue.Enqueue(line);
+            DialogueText.text = currentStory.Continue();
         }
-        
-        NextLineOld();
-    }
-
-    public void NextLineOld()
-    {
-        if (dialogueQueue.Count == 0)
+        else
         {
             ExitDialogue();
-            return;
         }
+    }
 
-        currentLine = dialogueQueue.Dequeue();
-        DialogueText.text = currentLine;
+    public void ExitDialogue()
+    {
+        DialoguePanel.SetActive(false);
+        dlgOpen = false;
     }
 }

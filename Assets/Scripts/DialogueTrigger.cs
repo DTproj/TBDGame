@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public DialogueActor actor;
+    [SerializeField]
+    private DialogueActor actor;
 
     public void TriggerDialogue()
     {
         DialogueManager.Instance.EnterDialogue(actor);
-        //DialogueManager.Instance.EnterDialogueOld(actor);
     }
 
 }
