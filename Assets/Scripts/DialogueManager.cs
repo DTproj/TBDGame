@@ -20,6 +20,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI NameText;
 
+    [SerializeField]
+    private GameObject[] Choices;
+
     private bool dlgOpen;
     public bool IsDialogueOpen { get { return dlgOpen; } }
 
