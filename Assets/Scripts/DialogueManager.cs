@@ -22,6 +22,7 @@ public class DialogueManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] Choices;
+    private TextMeshProUGUI[] ChoicesTexts;
 
     private bool dlgOpen;
     public bool IsDialogueOpen { get { return dlgOpen; } }
@@ -34,6 +35,13 @@ public class DialogueManager : MonoBehaviour
 
         dlgOpen = false;
         DialoguePanel.SetActive(false);
+
+        ChoicesTexts = new TextMeshProUGUI[Choices.Length];
+
+        for (int i = 0; i < Choices.Length; i++)
+        {
+            ChoicesTexts[i] = Choices[i].GetComponentInChildren<TextMeshProUGUI>(); 
+        }
     }
 
     public void EnterDialogue(DialogueActor actor)
@@ -47,11 +55,12 @@ public class DialogueManager : MonoBehaviour
         StoryUpdate();
     }
 
-    public void StoryUpdate()
+    private void StoryUpdate()
     {
         if (currentStory.canContinue)
         {
             DialogueText.text = currentStory.Continue();
+            ChoiceDisplay();
         }
         else
         {
@@ -59,7 +68,25 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void ExitDialogue()
+    private void ChoiceDisplay()
+    {
+        List<Choice> currentChoices = currentStory.currentChoices;
+        int j = 0;
+
+        for (int i = 0; i < currentChoices.Count; i++)
+        {
+            Choices[i].SetActive(true);
+            ChoicesTexts[i].text = Choices[i].GetComponentInChildren<TextMeshProUGUI>().text;
+            j = i;
+        }
+
+        for (int i = j; i < Choices.Length; i++)
+        {
+            Choices[i].SetActive(false);
+        }
+    }
+
+    private void ExitDialogue()
     {
         DialoguePanel.SetActive(false);
         dlgOpen = false;
