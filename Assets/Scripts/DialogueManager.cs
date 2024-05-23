@@ -38,9 +38,12 @@ public class DialogueManager : MonoBehaviour
 
         ChoicesTexts = new TextMeshProUGUI[Choices.Length];
 
-        for (int i = 0; i < Choices.Length; i++)
+        int i = 0;
+
+        foreach (var choice in Choices)
         {
-            ChoicesTexts[i] = Choices[i].GetComponentInChildren<TextMeshProUGUI>(); 
+            ChoicesTexts[i] = choice.GetComponentInChildren<TextMeshProUGUI>();
+            i++;
         }
     }
 
@@ -71,19 +74,24 @@ public class DialogueManager : MonoBehaviour
     private void ChoiceDisplay()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
-        int j = 0;
+        int i = 0;
 
-        for (int i = 0; i < currentChoices.Count; i++)
+        foreach (var choice in currentChoices)
         {
-            Choices[i].SetActive(true);
-            ChoicesTexts[i].text = Choices[i].GetComponentInChildren<TextMeshProUGUI>().text;
-            j = i;
+            Choices[i].gameObject.SetActive(true);
+            ChoicesTexts[i].text = choice.text;
+            i++;
         }
 
-        for (int i = j; i < Choices.Length; i++)
+        for (int j = i; j < Choices.Length; j++)
         {
-            Choices[i].SetActive(false);
+            Choices[i].gameObject.SetActive(false);
         }
+    }
+
+    public void MakeChoice(int choiceIndex)
+    {
+        currentStory.ChooseChoiceIndex(choiceIndex);
     }
 
     private void ExitDialogue()

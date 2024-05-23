@@ -2,9 +2,8 @@
 
 ===test===
 It's an inanimate fuckin' object.
-* [Ok.]
-    Nothing happened, go away.
+* Take item.
     ->END
-* [Take item.]
-    Why did you take that?
+* Goodbye.
     ->END
+->END

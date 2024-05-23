@@ -453,6 +453,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoiceButton2
       objectReference: {fileID: 0}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 435491325}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MakeChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4740,6 +4752,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoiceButton1
       objectReference: {fileID: 0}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 435491325}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MakeChoice
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5077,6 +5101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoiceButton0
       objectReference: {fileID: 0}
+    - target: {fileID: 7235897757504531849, guid: e1c079be00cb5ab4da630fc7257eac44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 435491325}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
