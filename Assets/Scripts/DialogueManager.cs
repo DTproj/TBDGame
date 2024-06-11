@@ -74,24 +74,40 @@ public class DialogueManager : MonoBehaviour
     private void ChoiceDisplay()
     {
         List<Choice> currentChoices = currentStory.currentChoices;
-        int i = 0;
 
-        foreach (var choice in currentChoices)
+        if(currentChoices.Count == 0)
         {
-            Choices[i].gameObject.SetActive(true);
-            ChoicesTexts[i].text = choice.text;
-            i++;
+            ChoiceDisplayBugFix();
         }
+        else
+        {
+            int i = 0;
 
-        for (int j = i; j < Choices.Length; j++)
-        {
-            Choices[i].gameObject.SetActive(false);
+            foreach (var choice in currentChoices)
+            {
+                Choices[i].gameObject.SetActive(true);
+                ChoicesTexts[i].text = choice.text;
+                i++;
+            }
+
+            for (int j = i; j < Choices.Length; j++)
+            {
+                Choices[i].gameObject.SetActive(false);
+            }
         }
+    }
+
+    private void ChoiceDisplayBugFix()
+    {
+        Choices[0].gameObject.SetActive(false);
+        Choices[1].gameObject.SetActive(false);
+        Choices[2].gameObject.SetActive(false);
     }
 
     public void MakeChoice(int choiceIndex)
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
+        StoryUpdate();
     }
 
     private void ExitDialogue()
