@@ -75,29 +75,16 @@ public class DialogueManager : MonoBehaviour
     {
         List<Choice> currentChoices = currentStory.currentChoices;
 
-        if(currentChoices.Count == 0)
-        {
-            ChoiceDisplayBugFix();
-        }
-        else
-        {
-            int i = 0;
+        ChoiceReset();
 
-            foreach (var choice in currentChoices)
-            {
-                Choices[i].gameObject.SetActive(true);
-                ChoicesTexts[i].text = choice.text;
-                i++;
-            }
-
-            for (int j = i; j < Choices.Length; j++)
-            {
-                Choices[i].gameObject.SetActive(false);
-            }
+        for (int i = 0; i < currentChoices.Count; i++)
+        {
+            Choices[i].gameObject.SetActive(true);
+            ChoicesTexts[i].text = currentChoices[i].text;
         }
     }
 
-    private void ChoiceDisplayBugFix()
+    private void ChoiceReset()
     {
         Choices[0].gameObject.SetActive(false);
         Choices[1].gameObject.SetActive(false);
