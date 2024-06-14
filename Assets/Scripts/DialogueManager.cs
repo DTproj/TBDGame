@@ -55,6 +55,8 @@ public class DialogueManager : MonoBehaviour
         dlgOpen = true;
         DialoguePanel.SetActive(true);
 
+        currentStory.BindExternalFunction("ExitDialogue", () => { ExitDialogue(); });
+
         StoryUpdate();
     }
 
@@ -99,6 +101,8 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitDialogue()
     {
+        currentStory.UnbindExternalFunction("ExitDialogue");
+
         DialoguePanel.SetActive(false);
         dlgOpen = false;
     }
