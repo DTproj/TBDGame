@@ -1,10 +1,12 @@
 EXTERNAL ExitDialogue()
+EXTERNAL GiveItem()
 
 -> start
 
 === start ===
 It's an inanimate fuckin' object.
 * [Take item.]
+    ~ GiveItem()
     -> itemTaken
 
 * [Goodbye.]

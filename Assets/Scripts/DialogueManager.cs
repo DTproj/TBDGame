@@ -56,6 +56,7 @@ public class DialogueManager : MonoBehaviour
         DialoguePanel.SetActive(true);
 
         currentStory.BindExternalFunction("ExitDialogue", () => { ExitDialogue(); });
+        currentStory.BindExternalFunction("GiveItem", () => { InventoryManager.Instance.AddItemToInventory("Inanimate Item", "It's an inanimate fuckin' item."); });
 
         StoryUpdate();
     }
