@@ -36,6 +36,22 @@ public class InventorySlot : MonoBehaviour, IPointerClickHandler
             InventoryManager.Instance.DeselectSlots();
             selectionShader.SetActive(true);
             isSelected = true;
+
+            if (hasItem) 
+            {
+                DisplayDesc();
+            }
+            else
+            {
+                InventoryManager.Instance.DescriptionPanel.SetActive(false);
+            }
         }
+    }
+
+    private void DisplayDesc()
+    { 
+        InventoryManager.Instance.DescriptionPanel.SetActive(true);
+        InventoryManager.Instance.NameText.text = itemName;
+        InventoryManager.Instance.DescriptionText.text = itemDesc;
     }
 }

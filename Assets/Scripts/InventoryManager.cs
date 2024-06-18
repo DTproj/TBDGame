@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +15,15 @@ public class InventoryManager : MonoBehaviour
     private static InventoryManager instance;
     public static InventoryManager Instance {  get { return instance; } }
 
+    public GameObject DescriptionPanel;
+    public TextMeshProUGUI DescriptionText;
+    public TextMeshProUGUI NameText;
+
     void Start()
     {
         instance = this;
         Inventory.SetActive(false);
+        DescriptionPanel.SetActive(false);
     }
 
     void Update()
@@ -32,6 +38,7 @@ public class InventoryManager : MonoBehaviour
             if (isOpen)
             {
                 Inventory.SetActive(false);
+                DescriptionPanel.SetActive(false);
                 isOpen = false;
             }
             else
