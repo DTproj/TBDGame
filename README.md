@@ -1,2 +1,2 @@
 # TBDGame
- Baseline practice for Unity game development
+ Baseline practise project for Unity game development
